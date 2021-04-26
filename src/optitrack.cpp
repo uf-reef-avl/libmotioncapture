@@ -374,14 +374,27 @@ namespace libmotioncapture {
         for (int j=0; j < nRigidBodies; j++)
         {
           // Rigid body position and orientation 
-          memcpy(&pImpl->rigidBodies[j].ID, ptr, 4); ptr += 4;
+          //Z-up
+          //memcpy(&pImpl->rigidBodies[j].ID, ptr, 4); ptr += 4;
+          //memcpy(&pImpl->rigidBodies[j].x, ptr, 4); ptr += 4;
+          //memcpy(&pImpl->rigidBodies[j].y, ptr, 4); ptr += 4;
+          //memcpy(&pImpl->rigidBodies[j].z, ptr, 4); ptr += 4;
+          //memcpy(&pImpl->rigidBodies[j].qx, ptr, 4); ptr += 4;
+          //memcpy(&pImpl->rigidBodies[j].qy, ptr, 4); ptr += 4;
+          //memcpy(&pImpl->rigidBodies[j].qz, ptr, 4); ptr += 4;
+          //memcpy(&pImpl->rigidBodies[j].qw, ptr, 4); ptr += 4;
+	  
+          //Y-up
+	  memcpy(&pImpl->rigidBodies[j].ID, ptr, 4); ptr += 4;
           memcpy(&pImpl->rigidBodies[j].x, ptr, 4); ptr += 4;
-          memcpy(&pImpl->rigidBodies[j].y, ptr, 4); ptr += 4;
           memcpy(&pImpl->rigidBodies[j].z, ptr, 4); ptr += 4;
+          memcpy(&pImpl->rigidBodies[j].y, ptr, 4); ptr += 4;
           memcpy(&pImpl->rigidBodies[j].qx, ptr, 4); ptr += 4;
-          memcpy(&pImpl->rigidBodies[j].qy, ptr, 4); ptr += 4;
           memcpy(&pImpl->rigidBodies[j].qz, ptr, 4); ptr += 4;
+          memcpy(&pImpl->rigidBodies[j].qy, ptr, 4); ptr += 4;
           memcpy(&pImpl->rigidBodies[j].qw, ptr, 4); ptr += 4;
+	  pImpl->rigidBodies[j].y *= -1;
+	  pImpl->rigidBodies[j].qy *= -1;
 
           // NatNet version 2.0 and later
           if(major >= 2)
